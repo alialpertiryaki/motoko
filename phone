@@ -1,38 +1,39 @@
- // importlar
+// importlar
 
 import Map "mo:base/HashMap";
 import Text "mo:base/Text";
 
 
- // actor -> canister -> smart contract
+// actor -> canister -> smart contract
 
 actor{
  // Motoko -> type language
 
  type Name = Text;
  type Phone = Text;
+ type Adress = Text;
 
  type Entry = {
   desc: Text;
   phone: Phone;
-};
+ };
 
-// variable (değişkenler)
-// let -> immutable (değiştirilmez)
-// var -> mutable (değiştirilebilir)
+ // variable (değişkenler)
+ // let -> immutable (değiştirilmez)
+ // var -> mutable (değiştirilebilir)
 
 let phonebook = Map.HashMap<Name, Entry>(0, Text.equal, Text.hash);
 
-// fonsikyonlar
-// query -> sorgulamak
+// fonksiyonlar
+// quert -> sorgulamak
 // update -> güncelleme
-   You, 1 second ago Uncommittes changes
+
 public func insert(name: Name, entry: Entry) : async () {
-    phonebook.put(name, entry);
-  };
+  phonebook.put(name, entry);
+};
 
-  public query func lookup(name: Name) : async ?Entry {
-    phonebook.get(name) // return phonebook.get(name);
-  };
-
+public query func lookup (name: Name) : async ?Entry {
+  phonebook.get(name) // return phonebook.get(name);
+};
+  
 };
